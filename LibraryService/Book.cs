@@ -21,14 +21,20 @@ public class Book : IItem
 
   public void BorrowItem(Person borrower)
   {
-    // TODO: Implement this method
-    throw new NotImplementedException();
+    if  (this.IsAvailable()) {
+      this.Borrower = borrower;
+    } else {
+      throw new InvalidOperationException();
+    }
   }
 
   public void ReturnItem(Person returnee)
   {
-    // TODO: Implement this method
-    throw new NotImplementedException();
+    if (this.Borrower == returnee) {
+      this.Borrower = null;
+    } else {
+      throw new InvalidOperationException();
+    }
   }
 
   public bool IsAvailable()
